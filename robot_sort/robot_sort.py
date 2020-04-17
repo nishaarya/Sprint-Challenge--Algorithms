@@ -99,6 +99,37 @@ class SortingRobot:
         # Fill this out
         pass
 
+        # this is going to be a bubble sort
+
+        # The light is on when robot sorting
+        self.set_light_on()
+        
+        while self.light_is_on():
+            self.set_light_off()
+            
+        
+        # we then move right
+            while self.can_move_right():
+                # we swap first
+                self.swap_item()
+                # then we move right 
+                self.move_right()
+                # now we comapare and swap for the bigger
+                # we swap as we go and move lower number back
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_on()
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                                
+            if self.can_move_right() == False and self.light_is_on(): 
+                while self.can_move_left() == True:
+                    self.move_left()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
